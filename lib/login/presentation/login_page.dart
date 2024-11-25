@@ -28,8 +28,15 @@ class _LoginPageState extends State<LoginPage> {
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
-                    const Text("Entrar"),
-                    const Text("Bem-Vindo a CarStore"),
+                    const Text(
+                      "Entrar",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                    ),
+                    const Text(
+                      "Bem-Vindo a CarStore",
+                      style: TextStyle(fontSize: 14),
+                    ),
                     SizedBox(height: 30),
                     Container(
                       decoration: BoxDecoration(
