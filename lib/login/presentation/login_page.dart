@@ -30,12 +30,14 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     const Text(
                       "Entrar",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          fontFamily: "Poppins"),
                     ),
                     const Text(
                       "Bem-Vindo a CarStore",
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(fontSize: 14, fontFamily: "Poppins"),
                     ),
                     SizedBox(height: 30),
                     Container(
@@ -98,7 +100,8 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: 20),
                     Text(
                       "Esqueceu a senha ?",
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600, fontFamily: "Poppins"),
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
@@ -112,7 +115,10 @@ class _LoginPageState extends State<LoginPage> {
                           width: double.infinity,
                           height: 50,
                           child: Center(
-                            child: Text("Entrar"),
+                            child: Text(
+                              "Entrar",
+                              style: TextStyle(fontFamily: "Poppins"),
+                            ),
                           )),
                     )
                   ],
