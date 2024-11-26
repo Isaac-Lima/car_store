@@ -13,6 +13,8 @@ class Cadastro extends StatefulWidget {
 class _CadastroState extends State<Cadastro> {
   CadastroController cadastroController = CadastroController();
 
+  bool _obscureText = true;
+
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _telephoneController = TextEditingController();
@@ -150,11 +152,21 @@ class _CadastroState extends State<Cadastro> {
                           ]),
                       child: TextField(
                         controller: _passwordController,
+                        obscureText: _obscureText,
                         decoration: InputDecoration(
                             icon: Icon(
                               Icons.lock,
                               size: 40,
                             ),
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                                icon: Icon(_obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off)),
                             labelText: "Senha",
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelStyle: TextStyle(color: Colors.grey),

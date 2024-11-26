@@ -13,6 +13,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   LoginController loginController = LoginController();
 
+  bool _obscureText = true;
+
   final _userNameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -92,11 +94,21 @@ class _LoginPageState extends State<LoginPage> {
                           ]),
                       child: TextField(
                         controller: _passwordController,
+                        obscureText: _obscureText,
                         decoration: InputDecoration(
                             icon: Icon(
                               Icons.lock,
                               size: 40,
                             ),
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                                icon: Icon(_obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off)),
                             labelText: "Senha",
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelStyle: TextStyle(color: Colors.grey),
