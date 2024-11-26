@@ -1,4 +1,6 @@
+import 'package:car_store/src/cadastro/presentation/sign_up.dart';
 import 'package:car_store/src/login/controller/login_controller.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -141,7 +143,29 @@ class _LoginPageState extends State<LoginPage> {
                                   fontFamily: "Poppins", fontSize: 20),
                             ),
                           )),
-                    )
+                    ),
+                    SizedBox(height: 30),
+                    Text.rich(TextSpan(children: [
+                      TextSpan(
+                          text: "Não tem uma conta ?",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w600)),
+                      TextSpan(
+                          text: " Cadastre-se",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFFFF5C00),
+                              fontWeight: FontWeight.w600),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUp()));
+                            }),
+                    ]))
                   ],
                 ),
               )
