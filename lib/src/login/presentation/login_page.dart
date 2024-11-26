@@ -1,3 +1,4 @@
+import 'package:car_store/src/login/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -8,6 +9,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  LoginController loginController = LoginController();
+
+  final _userNameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                                 offset: Offset(0, 3))
                           ]),
                       child: TextField(
+                        controller: _userNameController,
                         decoration: InputDecoration(
                             icon: Icon(
                               Icons.person,
@@ -82,6 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                                 offset: Offset(0, 3))
                           ]),
                       child: TextField(
+                        controller: _passwordController,
                         decoration: InputDecoration(
                             icon: Icon(
                               Icons.lock,
@@ -110,14 +118,27 @@ class _LoginPageState extends State<LoginPage> {
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10))),
-                      onPressed: () {},
+                      onPressed: () {
+                        final isEmpty = loginController.checkInputFields(
+                            _userNameController.text, _passwordController.text);
+
+                        if (isEmpty) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content:
+                                Text("Por favor, preencha todos os campos"),
+                            backgroundColor: Colors.red,
+                          ));
+                        }
+                      },
                       child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Center(
                             child: Text(
                               "Entrar",
-                              style: TextStyle(fontFamily: "Poppins"),
+                              style: TextStyle(
+                                  fontFamily: "Poppins", fontSize: 20),
                             ),
                           )),
                     )
