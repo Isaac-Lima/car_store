@@ -1,4 +1,4 @@
-import 'package:car_store/src/login/controller/login_controller.dart';
+import 'package:car_store/src/cadastro/controller/cadastro_controller.dart';
 import 'package:car_store/src/login/presentation/login_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +7,15 @@ class Cadastro extends StatefulWidget {
   const Cadastro({super.key});
 
   @override
-  State<Cadastro> createState() => _LoginPageState();
+  State<Cadastro> createState() => _CadastroState();
 }
 
-class _LoginPageState extends State<Cadastro> {
-  LoginController loginController = LoginController();
+class _CadastroState extends State<Cadastro> {
+  CadastroController cadastroController = CadastroController();
 
-  final _nameComplete = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _telephoneController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
@@ -60,13 +62,13 @@ class _LoginPageState extends State<Cadastro> {
                                 offset: Offset(0, 3))
                           ]),
                       child: TextField(
-                        controller: _nameComplete,
+                        controller: _nameController,
                         decoration: InputDecoration(
                             icon: Icon(
                               Icons.person,
                               size: 40,
                             ),
-                            labelText: "Nome Completo",
+                            labelText: "Usuário",
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelStyle: TextStyle(color: Colors.grey),
                             border:
@@ -76,7 +78,7 @@ class _LoginPageState extends State<Cadastro> {
                         cursorColor: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -89,7 +91,7 @@ class _LoginPageState extends State<Cadastro> {
                                 offset: Offset(0, 3))
                           ]),
                       child: TextField(
-                        controller: _nameComplete,
+                        controller: _emailController,
                         decoration: InputDecoration(
                             icon: Icon(
                               Icons.email,
@@ -105,7 +107,7 @@ class _LoginPageState extends State<Cadastro> {
                         cursorColor: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -118,13 +120,13 @@ class _LoginPageState extends State<Cadastro> {
                                 offset: Offset(0, 3))
                           ]),
                       child: TextField(
-                        controller: _nameComplete,
+                        controller: _telephoneController,
                         decoration: InputDecoration(
                             icon: Icon(
                               Icons.phone,
                               size: 40,
                             ),
-                            labelText: "Telefone",
+                            labelText: "Número de telefone",
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelStyle: TextStyle(color: Colors.grey),
                             border:
@@ -134,7 +136,7 @@ class _LoginPageState extends State<Cadastro> {
                         cursorColor: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -171,24 +173,27 @@ class _LoginPageState extends State<Cadastro> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10))),
                       onPressed: () {
-                        // final isEmpty = loginController.checkInputFields(
-                        //     _userNameController.text, _passwordController.text);
+                        final isEmpty = cadastroController.checkInputFields(
+                            _nameController.text,
+                            _emailController.text,
+                            _telephoneController.text,
+                            _passwordController.text);
 
-                        // if (isEmpty) {
-                        //   ScaffoldMessenger.of(context)
-                        //       .showSnackBar(const SnackBar(
-                        //     content:
-                        //         Text("Por favor, preencha todos os campos"),
-                        //     backgroundColor: Colors.red,
-                        //   ));
-                        // }
+                        if (isEmpty) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content:
+                                Text("Por favor, preencha todos os campos"),
+                            backgroundColor: Colors.red,
+                          ));
+                        }
                       },
                       child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Center(
                             child: Text(
-                              "Entrar",
+                              "Cadastrar",
                               style: TextStyle(
                                   fontFamily: "Poppins", fontSize: 20),
                             ),
