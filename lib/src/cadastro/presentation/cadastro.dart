@@ -1,19 +1,19 @@
-import 'package:car_store/src/cadastro/presentation/cadastro.dart';
 import 'package:car_store/src/login/controller/login_controller.dart';
+import 'package:car_store/src/login/presentation/login_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class Cadastro extends StatefulWidget {
+  const Cadastro({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Cadastro> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<Cadastro> {
   LoginController loginController = LoginController();
 
-  final _userNameController = TextEditingController();
+  final _nameComplete = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
@@ -37,14 +37,14 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     const Text(
-                      "Entrar",
+                      "Cadastrar",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
                           fontFamily: "Poppins"),
                     ),
                     const Text(
-                      "Bem-Vindo a CarStore",
+                      "Encontre o seu veículo dos sonhos !",
                       style: TextStyle(fontSize: 14, fontFamily: "Poppins"),
                     ),
                     SizedBox(height: 30),
@@ -60,13 +60,13 @@ class _LoginPageState extends State<LoginPage> {
                                 offset: Offset(0, 3))
                           ]),
                       child: TextField(
-                        controller: _userNameController,
+                        controller: _nameComplete,
                         decoration: InputDecoration(
                             icon: Icon(
                               Icons.person,
                               size: 40,
                             ),
-                            labelText: "Usuário",
+                            labelText: "Nome Completo",
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelStyle: TextStyle(color: Colors.grey),
                             border:
@@ -76,9 +76,65 @@ class _LoginPageState extends State<LoginPage> {
                         cursorColor: Colors.black,
                       ),
                     ),
-                    SizedBox(
-                      height: 30,
+                    SizedBox(height: 30),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 3))
+                          ]),
+                      child: TextField(
+                        controller: _nameComplete,
+                        decoration: InputDecoration(
+                            icon: Icon(
+                              Icons.email,
+                              size: 40,
+                            ),
+                            labelText: "Email",
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            labelStyle: TextStyle(color: Colors.grey),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 12)),
+                        cursorColor: Colors.black,
+                      ),
                     ),
+                    SizedBox(height: 30),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 3))
+                          ]),
+                      child: TextField(
+                        controller: _nameComplete,
+                        decoration: InputDecoration(
+                            icon: Icon(
+                              Icons.phone,
+                              size: 40,
+                            ),
+                            labelText: "Telefone",
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            labelStyle: TextStyle(color: Colors.grey),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 12)),
+                        cursorColor: Colors.black,
+                      ),
+                    ),
+                    SizedBox(height: 30),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -108,12 +164,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    Text(
-                      "Esqueceu a senha ?",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600, fontFamily: "Poppins"),
-                    ),
-                    SizedBox(height: 20),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFFFF5C00),
@@ -121,17 +171,17 @@ class _LoginPageState extends State<LoginPage> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10))),
                       onPressed: () {
-                        final isEmpty = loginController.checkInputFields(
-                            _userNameController.text, _passwordController.text);
+                        // final isEmpty = loginController.checkInputFields(
+                        //     _userNameController.text, _passwordController.text);
 
-                        if (isEmpty) {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
-                            content:
-                                Text("Por favor, preencha todos os campos"),
-                            backgroundColor: Colors.red,
-                          ));
-                        }
+                        // if (isEmpty) {
+                        //   ScaffoldMessenger.of(context)
+                        //       .showSnackBar(const SnackBar(
+                        //     content:
+                        //         Text("Por favor, preencha todos os campos"),
+                        //     backgroundColor: Colors.red,
+                        //   ));
+                        // }
                       },
                       child: SizedBox(
                           width: double.infinity,
@@ -147,13 +197,13 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: 30),
                     Text.rich(TextSpan(children: [
                       TextSpan(
-                          text: "Não tem uma conta ?",
+                          text: "Já tem uma conta ?",
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.grey,
                               fontWeight: FontWeight.w600)),
                       TextSpan(
-                          text: " Cadastre-se",
+                          text: " Entrar",
                           style: TextStyle(
                               fontSize: 18,
                               color: Color(0xFFFF5C00),
@@ -163,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Cadastro()));
+                                      builder: (context) => LoginPage()));
                             }),
                     ]))
                   ],
