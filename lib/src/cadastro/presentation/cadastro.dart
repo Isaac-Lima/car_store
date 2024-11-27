@@ -127,6 +127,7 @@ class _CadastroState extends State<Cadastro> {
                                   offset: Offset(0, 3))
                             ]),
                         child: TextField(
+                          inputFormatters: [BRMasks.mobilePhone],
                           controller: _telephoneController,
                           keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
