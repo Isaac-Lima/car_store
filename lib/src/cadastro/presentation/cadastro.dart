@@ -1,3 +1,4 @@
+import 'package:br_validators/br_validators.dart';
 import 'package:car_store/src/cadastro/controller/cadastro_controller.dart';
 import 'package:car_store/src/login/presentation/login_page.dart';
 import 'package:flutter/gestures.dart';
@@ -200,6 +201,9 @@ class _CadastroState extends State<Cadastro> {
 
                           final isValidEmail = cadastroController
                               .checkEmail(_emailController.text);
+                          final isValidTelephone =
+                              BRValidators.validateMobileNumber(
+                                  _telephoneController.text);
 
                           if (isEmpty) {
                             ScaffoldMessenger.of(context)
@@ -213,6 +217,13 @@ class _CadastroState extends State<Cadastro> {
                                 .showSnackBar(const SnackBar(
                               content:
                                   Text("Por favor, digite um email válido"),
+                              backgroundColor: Colors.red,
+                            ));
+                          } else if (!isValidTelephone) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text(
+                                  "Por favor, digite um número de celular válido"),
                               backgroundColor: Colors.red,
                             ));
                           }
