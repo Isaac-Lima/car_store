@@ -6,4 +6,9 @@ class CadastroController {
         telefone.isEmpty ||
         senha.isEmpty;
   }
+
+  bool checkEmail(String email) {
+    RegExp emailFormat = RegExp(r"^[\w\.-]+@([\w-]+\.)+[\w-]{2,}$");
+    return emailFormat.hasMatch(email);
+  }
 }

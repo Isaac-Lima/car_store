@@ -197,11 +197,21 @@ class _CadastroState extends State<Cadastro> {
                               _telephoneController.text,
                               _passwordController.text);
 
+                          final isValidEmail = cadastroController
+                              .checkEmail(_emailController.text);
+
                           if (isEmpty) {
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                               content:
                                   Text("Por favor, preencha todos os campos"),
+                              backgroundColor: Colors.red,
+                            ));
+                          } else if (!isValidEmail) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content:
+                                  Text("Por favor, digite um email válido"),
                               backgroundColor: Colors.red,
                             ));
                           }
