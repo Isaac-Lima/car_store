@@ -127,6 +127,7 @@ class _CadastroState extends State<Cadastro> {
                             ]),
                         child: TextField(
                           controller: _telephoneController,
+                          keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                               icon: Icon(
                                 Icons.phone,
