@@ -1,6 +1,7 @@
 import 'package:br_validators/br_validators.dart';
 import 'package:car_store/src/cadastro/controller/cadastro_controller.dart';
 import 'package:car_store/src/login/presentation/login_page.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -200,8 +201,8 @@ class _CadastroState extends State<Cadastro> {
                               _telephoneController.text,
                               _passwordController.text);
 
-                          final isValidEmail = cadastroController
-                              .checkEmail(_emailController.text);
+                          final isValidEmail =
+                              EmailValidator.validate(_emailController.text);
                           final isValidTelephone =
                               BRValidators.validateMobileNumber(
                                   _telephoneController.text);
